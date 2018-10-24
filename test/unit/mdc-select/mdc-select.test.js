@@ -518,7 +518,7 @@ test('adapter#getLabelWidth returns 0 if the label does not exist', () => {
   assert.equal(component.getDefaultFoundation().adapter_.getLabelWidth(), 0);
 });
 
-test(`adapter#setValid applies $cssClasses.INVALID properly`, () => {
+test(`adapter#setValid applies ${cssClasses.INVALID} properly`, () => {
   const hasOutline = false;
   const hasLabel = true;
   const {component, fixture} = setupTest(hasOutline, hasLabel);
@@ -671,37 +671,41 @@ test('#destroy destroys the helper text if it exists', () => {
   document.body.removeChild(container);
 });
 
+/* eslint-disable mocha/no-skipped-tests, max-len */
 // These are currently skipped due to rAF being improperly cleaned up somewhere in our tests
-test.skip(`MutationObserver adds ${cssClasses.REQUIRED} class to the parent when required attribute is added`, (done) => {
-  const hasLabel = true;
-  const hasOutline = false;
-  const hasHelperText = false;
-  const {fixture, nativeControl} = setupTest(hasLabel, hasOutline, hasHelperText);
-  assert.isFalse(fixture.classList.contains(cssClasses.REQUIRED));
+test.skip(`MutationObserver adds ${cssClasses.REQUIRED} class to the parent when required attribute is added`,
+  (done) => {
+    const hasLabel = true;
+    const hasOutline = false;
+    const hasHelperText = false;
+    const {fixture, nativeControl} = setupTest(hasLabel, hasOutline, hasHelperText);
+    assert.isFalse(fixture.classList.contains(cssClasses.REQUIRED));
 
-  nativeControl.setAttribute('required', 'true');
+    nativeControl.setAttribute('required', 'true');
 
-  // MutationObservers are queued as microtasks and fire asynchronously
-  setTimeout(() => {
-    assert.isTrue(fixture.classList.contains(cssClasses.REQUIRED));
-    done();
-  }, 0);
-});
-
-test.skip(`MutationObserver removes ${cssClasses.REQUIRED} class from the parent when required attribute is removed`, (done) => {
-  const hasLabel = true;
-  const hasOutline = false;
-  const hasHelperText = false;
-  const {fixture, nativeControl} = setupTest(hasLabel, hasOutline, hasHelperText);
-
-  nativeControl.setAttribute('required', 'true');
-  setTimeout(() => {
-    assert.isTrue(fixture.classList.contains(cssClasses.REQUIRED));
-
-    fixture.querySelector(strings.NATIVE_CONTROL_SELECTOR).removeAttribute('required');
+    // MutationObservers are queued as microtasks and fire asynchronously
     setTimeout(() => {
-      assert.isFalse(fixture.classList.contains(cssClasses.REQUIRED));
+      assert.isTrue(fixture.classList.contains(cssClasses.REQUIRED));
       done();
     }, 0);
-  }, 0);
-});
+  });
+
+test.skip(`MutationObserver removes ${cssClasses.REQUIRED} class from the parent when required attribute is removed`,
+  (done) => {
+    const hasLabel = true;
+    const hasOutline = false;
+    const hasHelperText = false;
+    const {fixture, nativeControl} = setupTest(hasLabel, hasOutline, hasHelperText);
+
+    nativeControl.setAttribute('required', 'true');
+    setTimeout(() => {
+      assert.isTrue(fixture.classList.contains(cssClasses.REQUIRED));
+
+      fixture.querySelector(strings.NATIVE_CONTROL_SELECTOR).removeAttribute('required');
+      setTimeout(() => {
+        assert.isFalse(fixture.classList.contains(cssClasses.REQUIRED));
+        done();
+      }, 0);
+    }, 0);
+  });
+/* eslint-enable mocha/no-skipped-tests, max-len */

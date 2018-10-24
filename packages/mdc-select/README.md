@@ -80,7 +80,11 @@ through the use of another class (ex. `demo-width-class`).
       <li class="mdc-list" data-value="fruit">
         Fruit
       </li>
+<<<<<<< HEAD
     </ul>
+=======
+    </ul> 
+>>>>>>> feat/select-new
   </div>
   <label class="mdc-floating-label">Pick a Food Group</label>
   <div class="mdc-line-ripple"></div>
@@ -91,13 +95,21 @@ through the use of another class (ex. `demo-width-class`).
 
 ### Styles
 
+<<<<<<< HEAD
 For the native select version you can simply include the select Sass file.
+=======
+For the native select version you can simply include the select Sass file. 
+>>>>>>> feat/select-new
 
 ```scss
 @import "@material/select/mdc-select";
 ```
 
+<<<<<<< HEAD
 When using the enhanced select, you will also require the menu components.
+=======
+When using the enhanced select, you will also require the menu components. 
+>>>>>>> feat/select-new
 
 ```scss
 @import "@material/list/mdc-list";
@@ -127,7 +139,11 @@ See [Importing the JS component](../../docs/importing-js.md) for more informatio
 ### Outlined Select
 
 The Select Outlined variant uses the `mdc-notched-outline` in place of the `mdc-line-ripple` element and adds the
+<<<<<<< HEAD
 `mdc-select--outlined` modifier class on the root element. All other elements for each type of select remain the
+=======
+`mdc-select--outlined` modifier class on the root element. All other elements for each type of select remain the 
+>>>>>>> feat/select-new
 same.
 
 ```html
@@ -193,7 +209,11 @@ setting the width of the `mdc-select__menu` element to match. This is best done 
       <li class="mdc-list" data-value="fruit">
         Fruit
       </li>
+<<<<<<< HEAD
     </ul>
+=======
+    </ul> 
+>>>>>>> feat/select-new
   </div>
   <label class="mdc-floating-label mdc-floating-label--float-above">Pick a Food Group</label>
   <div class="mdc-line-ripple"></div>
@@ -209,7 +229,11 @@ instead, add an initial `<option>` element with the `disabled` *and* `selected` 
 <option value="" disabled selected></option>
 ```
 
+<<<<<<< HEAD
 For the enhanced select, simply leave the `mdc-select__selected-text` element empty and don't specify an element as
+=======
+For the enhanced select, simply leave the `mdc-select__selected-text` element empty and don't specify an element as 
+>>>>>>> feat/select-new
 selected.
 
 #### Disabled select
@@ -228,12 +252,20 @@ Add the `mdc-select--disabled` class to the `mdc-select` element, and add the `d
 </div>
 ```
 
+<<<<<<< HEAD
 For the enhanced select, you can simply add the `mdc-select--disabled` class to the `mdc-select` element.
+=======
+For the enhanced select, you can simply add the `mdc-select--disabled` class to the `mdc-select` element. 
+>>>>>>> feat/select-new
 
 ```html
 <div class="mdc-select mdc-select--disabled">
   <i class="mdc-select__dropdown-icon"></i>
+<<<<<<< HEAD
   <div class="mdc-select__selected-text"></div>
+=======
+  <div class="mdc-select__selected-text"></div>  
+>>>>>>> feat/select-new
   <div class="mdc-select__menu mdc-menu mdc-menu-surface" role="listbox">
     ...
   </div>
@@ -265,8 +297,13 @@ For the native `select`, simply add the `disabled` attribute to individual optio
 ```
 
 For the enhanced select, you should add the `mdc-list-item--disabled` class to list items that are disabled. Unlike the
+<<<<<<< HEAD
 native select, disabled list items are removed from the list items index, and are ignored entirely. You cannot
 programmatically select a disabled list item in the enhanced select.
+=======
+native select, disabled list items are removed from the list items index, and are ignored entirely. You cannot 
+programmatically select a disabled list item in the enhanced select. 
+>>>>>>> feat/select-new
 
 ```html
 <div class="mdc-select">
@@ -284,7 +321,11 @@ programmatically select a disabled list item in the enhanced select.
       <li class="mdc-list" data-value="fruit">
         Fruit
       </li>
+<<<<<<< HEAD
     </ul>
+=======
+    </ul> 
+>>>>>>> feat/select-new
   </div>
   <label class="mdc-floating-label mdc-floating-label--float-above">Pick a Food Group</label>
   <div class="mdc-line-ripple"></div>
@@ -319,7 +360,11 @@ example of the enhanced select component with all the necessary aria attributes 
       <li class="mdc-list" data-value="fruit" role="option">
         Fruit
       </li>
+<<<<<<< HEAD
     </ul>
+=======
+    </ul> 
+>>>>>>> feat/select-new
   </div>
   <label id="demo-label" class="mdc-floating-label mdc-floating-label--float-above">Pick a Food Group</label>
   <div class="mdc-line-ripple"></div>
@@ -384,6 +429,7 @@ The `MDCSelect` component API is modeled after a subset of the `HTMLSelectElemen
 | `leadingIconAriaLabel` | string (write-only) | Proxies to the foundation's `setLeadingIconAriaLabel` method. |
 | `leadingIconContent` | string (write-only) | Proxies to the foundation's `setLeadingIconContent` method. |
 | `helperTextContent` | string (write-only)| Proxies to the foundation's `setHelperTextContent` method when set. |
+
 ### Events
 
 The MDC Select JS component emits a `MDCSelect:change` event when the selected option changes as the result of a user action.

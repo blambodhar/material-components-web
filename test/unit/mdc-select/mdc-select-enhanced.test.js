@@ -808,7 +808,7 @@ test('adapter#checkValidity returns true regardless if required class is not pre
   const hasMockMenu = false;
   const hasOutline = false;
   const hasLabel = true;
-  const {component, fixture} = setupTest(hasOutline, hasLabel, hasMockFoundation, hasMockMenu);
+  const {component} = setupTest(hasOutline, hasLabel, hasMockFoundation, hasMockMenu);
   const adapter = component.getDefaultFoundation().adapter_;
 
   component.selectedIndex = -1;
@@ -847,7 +847,7 @@ test('adapter#setValid updates aria-invalid attribute properly', () => {
   assert.strictEqual(selectedText.getAttribute('aria-invalid'), 'false');
 });
 
-test(`adapter#setValid applies $cssClasses.INVALID properly`, () => {
+test('adapter#setValid applies $cssClasses.INVALID properly', () => {
   const hasMockFoundation = true;
   const hasMockMenu = false;
   const hasOutline = false;
@@ -1162,37 +1162,41 @@ test('#destroy destroys the helper text if it exists', () => {
   document.body.removeChild(container);
 });
 
+/* eslint-disable mocha/no-skipped-tests, max-len */
 // These are currently skipped due to rAF being improperly cleaned up somewhere in our tests
-test.skip(`MutationObserver adds ${cssClasses.REQUIRED} class to the parent when aria-required attribute is added`, (done) => {
-  const hasLabel = true;
-  const hasOutline = false;
-  const hasHelperText = false;
-  const {fixture, selectedText} = setupTest(hasLabel, hasOutline, hasHelperText);
-  assert.isFalse(fixture.classList.contains(cssClasses.REQUIRED));
+test.skip(`MutationObserver adds ${cssClasses.REQUIRED} class to the parent when aria-required attribute is added`,
+  (done) => {
+    const hasLabel = true;
+    const hasOutline = false;
+    const hasHelperText = false;
+    const {fixture, selectedText} = setupTest(hasLabel, hasOutline, hasHelperText);
+    assert.isFalse(fixture.classList.contains(cssClasses.REQUIRED));
 
-  selectedText.setAttribute('aria-required', 'true');
+    selectedText.setAttribute('aria-required', 'true');
 
-  // MutationObservers are queued as microtasks and fire asynchronously
-  setTimeout(() => {
-    assert.isTrue(fixture.classList.contains(cssClasses.REQUIRED));
-    done();
-  }, 0);
-});
-
-test.skip(`MutationObserver removes ${cssClasses.REQUIRED} class from the parent when aria-required attribute is removed`, (done) => {
-  const hasLabel = true;
-  const hasOutline = false;
-  const hasHelperText = false;
-  const {fixture, selectedText} = setupTest(hasLabel, hasOutline, hasHelperText);
-
-  selectedText.setAttribute('aria-required', 'true');
-  setTimeout(() => {
-    assert.isTrue(fixture.classList.contains(cssClasses.REQUIRED));
-
-    selectedText.removeAttribute('aria-required');
+    // MutationObservers are queued as microtasks and fire asynchronously
     setTimeout(() => {
-      assert.isFalse(fixture.classList.contains(cssClasses.REQUIRED));
+      assert.isTrue(fixture.classList.contains(cssClasses.REQUIRED));
       done();
     }, 0);
-  }, 0);
-});
+  });
+
+test.skip(`MutationObserver removes ${cssClasses.REQUIRED} class from the parent when aria-required attribute is removed`,
+  (done) => {
+    const hasLabel = true;
+    const hasOutline = false;
+    const hasHelperText = false;
+    const {fixture, selectedText} = setupTest(hasLabel, hasOutline, hasHelperText);
+
+    selectedText.setAttribute('aria-required', 'true');
+    setTimeout(() => {
+      assert.isTrue(fixture.classList.contains(cssClasses.REQUIRED));
+
+      selectedText.removeAttribute('aria-required');
+      setTimeout(() => {
+        assert.isFalse(fixture.classList.contains(cssClasses.REQUIRED));
+        done();
+      }, 0);
+    }, 0);
+  });
+/* eslint-enable mocha/no-skipped-tests, max-len*/

@@ -526,6 +526,29 @@ class MDCSelect extends MDCComponent {
   }
 
   /**
+   * Sets the selected index of the enhanced menu.
+   * @param {number} index
+   * @private
+   */
+  setEnhancedSelectedIndex_(index) {
+    const selectedItem = this.menu_.items[index];
+    this.selectedText_.textContent = selectedItem ? selectedItem.textContent.trim() : '';
+    const previouslySelected = this.menuElement_.querySelector(strings.SELECTED_ITEM_SELECTOR);
+
+    if (previouslySelected) {
+      previouslySelected.classList.remove(cssClasses.SELECTED_ITEM_CLASS);
+      previouslySelected.removeAttribute(strings.ARIA_SELECTED_ATTR);
+    }
+
+    if (selectedItem) {
+      selectedItem.classList.add(cssClasses.SELECTED_ITEM_CLASS);
+      selectedItem.setAttribute(strings.ARIA_SELECTED_ATTR, 'true');
+    }
+
+    this.layout();
+  }
+
+  /**
    * @return {!{
    *   addClass: function(string): void,
    *   removeClass: function(string): void,
@@ -616,29 +639,6 @@ class MDCSelect extends MDCComponent {
       leadingIcon: this.leadingIcon_ ? this.leadingIcon_.foundation : undefined,
       helperText: this.helperText_ ? this.helperText_.foundation : undefined,
     };
-  }
-
-  /**
-   * Sets the selected index of the enhanced menu.
-   * @param {number} index
-   * @private
-   */
-  setEnhancedSelectedIndex_(index) {
-    const selectedItem = this.menu_.items[index];
-    this.selectedText_.textContent = selectedItem ? selectedItem.textContent.trim() : '';
-    const previouslySelected = this.menuElement_.querySelector(strings.SELECTED_ITEM_SELECTOR);
-
-    if (previouslySelected) {
-      previouslySelected.classList.remove(cssClasses.SELECTED_ITEM_CLASS);
-      previouslySelected.removeAttribute(strings.ARIA_SELECTED_ATTR);
-    }
-
-    if (selectedItem) {
-      selectedItem.classList.add(cssClasses.SELECTED_ITEM_CLASS);
-      selectedItem.setAttribute(strings.ARIA_SELECTED_ATTR, 'true');
-    }
-
-    this.layout();
   }
 
   initialSyncRequiredState_() {
